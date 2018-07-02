@@ -1,7 +1,10 @@
-# Helper methods defined here can be accessed in any controller or view in the application
+# frozen_string_literal: true
 
+# main module reference
 module StewardAlfred
+  # main app class reference
   class App
+    # contahelbper module for app
     module ContaHelper
       # def simple_helper_method
       # ...

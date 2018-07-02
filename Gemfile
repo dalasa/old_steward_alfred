@@ -16,13 +16,12 @@ source 'https://rubygems.org'
 # gem 'oj'
 
 # Project requirements
+gem 'pry-byebug'
 gem 'rake'
 gem 'rubocop'
-gem 'pry-byebug'
 group :test do
   gem 'database_cleaner'
 end
-
 
 # Component requirements
 gem 'erubi', '~> 1.6'
