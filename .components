@@ -1,9 +1,9 @@
 ---
-:orm: activerecord
+:orm: sequel
 :test: rspec
 :mock: none
 :script: none
-:renderer: none
+:renderer: erb
 :stylesheet: none
 :namespace: StewardAlfred
 :migration_format: number

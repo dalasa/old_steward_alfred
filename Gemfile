@@ -17,8 +17,9 @@ source 'https://rubygems.org'
 gem 'rake'
 
 # Component requirements
-gem 'activerecord', '>= 3.1', :require => 'active_record'
+gem 'erubi', '~> 1.6'
 gem 'pg'
+gem 'sequel'
 
 # Test requirements
 gem 'rspec', :group => 'test'
