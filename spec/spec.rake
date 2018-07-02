@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 begin
   require 'rspec/core/rake_task'
 
@@ -9,16 +11,16 @@ begin
     desc "Run the spec suite in #{folder}"
     RSpec::Core::RakeTask.new("spec:#{folder}") do |t|
       t.pattern = "./spec/#{folder}/**/*_spec.rb"
-      t.rspec_opts = "--color"
+      t.rspec_opts = '--color'
     end
   end
 
-  desc "Run complete application spec suite"
+  desc 'Run complete application spec suite'
   task 'spec' => spec_tasks.map { |f| "spec:#{f}" }
 rescue LoadError
   task :spec do
-    puts "RSpec is not part of this bundle, skip specs."
+    puts 'RSpec is not part of this bundle, skip specs.'
   end
 end
 
-task :default => :spec
+task default: :spec

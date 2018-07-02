@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ##
 # This file mounts each app in the Padrino project to a specified sub-uri.
 # You can mount additional applications using any of these commands below:
@@ -28,9 +30,9 @@
 Padrino.configure_apps do
   # enable :sessions
   set :session_secret, '275c761d476f71ddf037f2cbbee4b4ff8c8c3235fcdff6de942438569c11e817'
-  set :protection, :except => :path_traversal
+  set :protection, except: :path_traversal
   set :protect_from_csrf, true
 end
 
 # Mounts the core application for this project
-Padrino.mount('StewardAlfred::App', :app_file => Padrino.root('app/app.rb')).to('/')
+Padrino.mount('StewardAlfred::App', app_file: Padrino.root('app/app.rb')).to('/')

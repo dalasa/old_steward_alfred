@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 
 # Padrino supports Ruby version 2.2.2 and later
@@ -15,6 +17,12 @@ source 'https://rubygems.org'
 
 # Project requirements
 gem 'rake'
+gem 'rubocop'
+gem 'pry-byebug'
+group :test do
+  gem 'database_cleaner'
+end
+
 
 # Component requirements
 gem 'erubi', '~> 1.6'
@@ -22,8 +30,8 @@ gem 'pg'
 gem 'sequel'
 
 # Test requirements
-gem 'rspec', :group => 'test'
-gem 'rack-test', :require => 'rack/test', :group => 'test'
+gem 'rack-test', require: 'rack/test', group: 'test'
+gem 'rspec', group: 'test'
 
 # Padrino Stable Gem
 gem 'padrino', '0.14.3'
