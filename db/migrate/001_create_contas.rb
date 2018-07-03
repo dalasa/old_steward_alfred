@@ -1,16 +1,14 @@
-# frozen_string_literal: true
-
-Sequel.migration do
-  up do
-    create_table :contas do
-      primary_key :id
-      String :nome, size: 50
-      String :tipo
-      Float :total
+class CreateContas < ActiveRecord::Migration[5.1]
+  def self.up
+    create_table :contas do |t|
+      t.string :nome
+      t.string :tipo
+      t.float :total
+      t.timestamps null: false
     end
   end
 
-  down do
+  def self.down
     drop_table :contas
   end
 end

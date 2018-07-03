@@ -25,8 +25,8 @@ end
 
 # Component requirements
 gem 'erubi', '~> 1.6'
+gem 'activerecord', '~> 5.1.1', :require => 'active_record'
 gem 'pg'
-gem 'sequel'
 
 # Test requirements
 gem 'rack-test', require: 'rack/test', group: 'test'

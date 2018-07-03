@@ -3,6 +3,7 @@
 module StewardAlfred
   # This is the main app class
   class App < Padrino::Application
+    use ConnectionPoolManagement
     register Padrino::Mailer
     register Padrino::Helpers
     enable :sessions

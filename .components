@@ -1,5 +1,5 @@
 ---
-:orm: sequel
+:orm: activerecord
 :test: rspec
 :mock: none
 :script: none
