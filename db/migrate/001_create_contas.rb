@@ -6,6 +6,7 @@ class CreateContas < ActiveRecord::Migration[5.1]
       t.float :total
       t.timestamps null: false
     end
+    add_index('contas', 'nome', {unique: true})
   end
 
   def self.down
