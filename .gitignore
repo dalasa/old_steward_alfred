@@ -7,3 +7,4 @@ vendor/gems/*
 db/*.db
 .*.sw*
 db/schema.rb
+.rake_tasks~
