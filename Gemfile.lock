@@ -31,6 +31,7 @@ GEM
     minitest (5.11.3)
     moneta (1.0.0)
     mustermann (1.0.2)
+    oj (3.6.3)
     padrino (0.14.3)
       padrino-admin (= 0.14.3)
       padrino-cache (= 0.14.3)
@@ -121,6 +122,7 @@ DEPENDENCIES
   activerecord (~> 5.1.1)
   database_cleaner
   erubi (~> 1.6)
+  oj
   padrino (= 0.14.3)
   pg
   pry-byebug

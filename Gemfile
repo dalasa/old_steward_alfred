@@ -13,7 +13,7 @@ source 'https://rubygems.org'
 # gem 'trinidad', :platform => 'jruby'
 
 # Optional JSON codec (faster performance)
-# gem 'oj'
+gem 'oj'
 
 # Project requirements
 gem 'pry-byebug'
