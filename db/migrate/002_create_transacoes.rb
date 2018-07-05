@@ -4,7 +4,7 @@ class CreateTransacoes < ActiveRecord::Migration[5.1]
       t.belongs_to :conta, index: true
       t.string :descricao, null: false
       t.float :valor, null: false
-      t.string :tipo, null: false
+      t.column :tipo, :integer, default: 0
       t.string :tags, array: true, default: []
       t.date :data_transacao, null: false
       t.date :data_efetivacao, null: false
