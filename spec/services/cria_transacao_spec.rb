@@ -4,12 +4,14 @@ require 'spec_helper'
 
 RSpec.describe Services::CriaTransacao do
   describe '#executa' do
+    let(:nome_conta) { 'conta do banco' }
+    let(:tipo_transacao) { :saida }
     let(:transacao) do
       {
-        nome_conta: 'conta do banco',
+        nome_conta: nome_conta,
         descricao: 'compra no mercado da esquina',
-        valor: 100,
-        tipo: 'saida',
+        valor: 50,
+        tipo: tipo_transacao,
         tags: ['mercado', 'alimentacao', 'essencial'],
         data_transacao: Date.new.to_s
       }
@@ -28,8 +30,10 @@ RSpec.describe Services::CriaTransacao do
     end
 
     context 'quando a conta existe' do
+      let(:total_inicial_conta) { 100 }
+
       before do
-        Services::CriaConta.new(nome: 'conta do banco', tipo:'conta corrente', total: 100).executa
+        Services::CriaConta.new(nome: 'conta do banco', tipo:'conta corrente', total: total_inicial_conta).executa
       end
 
       it 'cria a transacao com sucesso' do
@@ -40,6 +44,23 @@ RSpec.describe Services::CriaTransacao do
       it 'retorna a transacao criada' do
         expect(subject).to be_a(Transacao)
       end
+
+      context 'a transacao é de saida' do
+        let(:tipo_transacao) { 'saida' }
+        it 'subtrai o valor da transacao ao total da conta' do
+          transacao = subject
+          expect(Conta.find_by(nome: nome_conta).total).to eq (total_inicial_conta - transacao.valor)
+        end
+      end
+
+      context 'a transacao é de entrada' do
+        let(:tipo_transacao) { :entrada }
+        it 'soma o valor da transacao ao total da conta' do
+          transacao = subject
+          expect(Conta.find_by(nome: nome_conta).total).to eq (total_inicial_conta+transacao.valor)
+        end
+      end
+
     end
   end
 end

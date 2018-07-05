@@ -13,8 +13,7 @@ module Services
     end
 
     def executa
-      conta = Conta.find_by(nome: @nome_conta)
-      Transacao.create!(
+      transacao = Transacao.create!(
         conta: conta,
         descricao: @descricao,
         valor: @valor,
@@ -23,6 +22,21 @@ module Services
         data_transacao: @data_transacao,
         data_efetivacao: @data_transacao + 1.day
       )
+      atualiza_conta(transacao)
+      transacao
     end
+
+    private
+
+    def conta
+      @conta ||= Conta.find_by(nome: @nome_conta)
+    end
+
+    def atualiza_conta(transacao)
+      conta.credita(transacao.valor) if transacao.entrada?
+      conta.debita(transacao.valor) if transacao.saida?
+      conta.save!
+    end
+
   end
 end
