@@ -13,16 +13,8 @@ module Services
     end
 
     def execute
-      transaction = Transaction.create!(
-        account: account,
-        description: @description,
-        amount: @amount,
-        kind: @kind,
-        tags: @tags,
-        transaction_date: @transaction_date,
-        billing_date: @transaction_date + 1.day
-      )
-      update_account(transaction)
+      transaction = create_on_database
+      update_account_total_with(transaction)
       transaction
     end
 
@@ -32,10 +24,22 @@ module Services
       @account ||= Account.find_by(name: @account_name)
     end
 
-    def update_account(transaction)
+    def update_account_total_with(transaction)
       account.credit(transaction.amount) if transaction.income?
       account.debit(transaction.amount) if transaction.expense?
       account.save!
+    end
+
+    def create_on_database
+      Transaction.create!(
+        account: account,
+        description: @description,
+        amount: @amount,
+        kind: @kind,
+        tags: @tags,
+        transaction_date: @transaction_date,
+        billing_date: @transaction_date + 1.day
+      )
     end
   end
 end

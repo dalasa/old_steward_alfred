@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# This model describes an account
 class Account < ActiveRecord::Base
   has_many :transactions
   enum kind: { checking: 0 }

@@ -49,7 +49,7 @@ RSpec.describe Services::CreateTransaction do
         let(:transaction_kind) { 'expense' }
         it 'substracts the amount from accounts total' do
           transaction = subject
-          expect(Account.find_by(name: account_name).total).to eq (account_starting_total - transaction.amount)
+          expect(Account.find_by(name: account_name).total).to eq(account_starting_total - transaction.amount)
         end
       end
 
@@ -57,7 +57,7 @@ RSpec.describe Services::CreateTransaction do
         let(:transaction_kind) { :income }
         it 'sums the transaction amount to accounts total' do
           transaction = subject
-          expect(Account.find_by(name: account_name).total).to eq (account_starting_total + transaction.amount)
+          expect(Account.find_by(name: account_name).total).to eq(account_starting_total + transaction.amount)
         end
       end
     end

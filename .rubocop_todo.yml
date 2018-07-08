@@ -26,5 +26,3 @@ Layout/EndAlignment:
 # Offense count: 25
 # Configuration parameters: AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.
 # URISchemes: http, https
-Metrics/LineLength:
-  Max: 120

@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# This model describes a transaction, the main model to the system
 class Transaction < ActiveRecord::Base
   belongs_to :account
   validates :account, presence: true

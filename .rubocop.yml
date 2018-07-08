@@ -1,1 +1,18 @@
 inherit_from: .rubocop_todo.yml
+
+AllCops:
+  TargetRubyVersion: 2.5
+  # Exclude:
+    # - path/to/files
+
+Metrics/BlockLength:
+  Exclude:
+    - spec/**/*
+
+Metrics/LineLength:
+  Max: 120
+
+Style/Documentation:
+  Exclude:
+    - db/**/*
+    - lib/connection_pool_management_middleware.rb
