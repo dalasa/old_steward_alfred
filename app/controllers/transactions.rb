@@ -1,8 +1,12 @@
 # frozen_string_literal: true
 
-StewardAlfred::App.controllers :transaction do
+StewardAlfred::App.controllers :transactions do
   set :protect_from_csrf, false
 
+  get :index, :with => :id do
+    halt 501
+  end
+  
   post :index do
     transaction = Services::CreateTransaction.new(
       account_name: params[:account_name],
@@ -18,23 +22,4 @@ StewardAlfred::App.controllers :transaction do
     logger.error(e.message)
     status 500
   end
-
-  # get :index, :map => '/foo/bar' do
-  #   session[:foo] = 'bar'
-  #   render 'index'
-  # end
-
-  # get :sample, :map => '/sample/url', :provides => [:any, :js] do
-  #   case content_type
-  #     when :js then ...
-  #     else ...
-  # end
-
-  # get :foo, :with => :id do
-  #   "Maps to url '/foo/#{params[:id]}'"
-  # end
-
-  # get '/example' do
-  #   'Hello world!'
-  # end
 end
