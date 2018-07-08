@@ -25,9 +25,7 @@ module Services
     end
 
     def update_account_total_with(transaction)
-      account.credit(transaction.amount) if transaction.income?
-      account.debit(transaction.amount) if transaction.expense?
-      account.save!
+      account.process_transaction(transaction)
     end
 
     def create_on_database

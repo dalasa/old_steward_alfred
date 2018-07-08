@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-RSpec.describe '/account' do
+RSpec.describe '/accounts' do
   describe '#post' do
     let(:account) do
       {
@@ -12,7 +12,7 @@ RSpec.describe '/account' do
       }
     end
     subject do
-      post '/account', account
+      post '/accounts', account
     end
 
     it 'returns 201 status' do

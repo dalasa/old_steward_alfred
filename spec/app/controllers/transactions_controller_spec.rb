@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-RSpec.describe '/transaction' do
+RSpec.describe '/transactions' do
   describe '#post' do
     let(:transaction) do
       {
@@ -15,7 +15,7 @@ RSpec.describe '/transaction' do
       }
     end
     subject do
-      post '/transaction', transaction
+      post '/transactions', transaction
     end
 
     context 'when account does not exist' do
