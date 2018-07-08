@@ -24,8 +24,8 @@ group :test do
 end
 
 # Component requirements
+gem 'activerecord', '~> 5.1.1', require: 'active_record'
 gem 'erubi', '~> 1.6'
-gem 'activerecord', '~> 5.1.1', :require => 'active_record'
 gem 'pg'
 
 # Test requirements

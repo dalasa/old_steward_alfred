@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-StewardAlfred::App.controllers :conta do
+StewardAlfred::App.controllers :account do
   set :protect_from_csrf, false
   # get :index, :map => '/foo/bar' do
   #   session[:foo] = 'bar'
@@ -25,11 +25,11 @@ StewardAlfred::App.controllers :conta do
   end
 
   post :index do
-    Services::CriaConta.new(
-      nome: params[:nome],
-      tipo: params[:tipo],
+    Services::CreateAccount.new(
+      name: params[:name],
+      kind: params[:kind],
       total: params[:total]
-    ).executa
+    ).execute
     status 201
   rescue StandardError => e
     logger.error(e.message)

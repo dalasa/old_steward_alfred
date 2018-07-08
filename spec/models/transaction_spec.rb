@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
-RSpec.describe Transacao do
+RSpec.describe Transaction do
   pending "add some examples to (or delete) #{__FILE__}"
 end

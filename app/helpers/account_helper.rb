@@ -5,12 +5,12 @@ module StewardAlfred
   # main app class reference
   class App
     # contahelbper module for app
-    module ContaHelper
+    module AccountHelper
       # def simple_helper_method
       # ...
       # end
     end
 
-    helpers ContaHelper
+    helpers AccountHelper
   end
 end

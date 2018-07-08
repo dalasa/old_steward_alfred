@@ -1,19 +1,19 @@
 # frozen_string_literal: true
 
-StewardAlfred::App.controllers :transacao do
+StewardAlfred::App.controllers :transaction do
   set :protect_from_csrf, false
 
   post :index do
-    transacao = Services::CriaTransacao.new(
-      nome_conta: params[:nome_conta],
-      descricao: params[:descricao],
-      valor: params[:valor],
-      tipo: params[:tipo],
+    transaction = Services::CreateTransaction.new(
+      account_name: params[:account_name],
+      description: params[:description],
+      amount: params[:amount],
+      kind: params[:kind],
       tags: params[:tags],
-      data_transacao: params[:data_transacao]
-    ).executa
+      transaction_date: params[:transaction_date]
+    ).execute
     status 201
-    Oj.dump(transacao.attributes)
+    Oj.dump(transaction.attributes)
   rescue StandardError => e
     logger.error(e.message)
     status 500
@@ -37,6 +37,4 @@ StewardAlfred::App.controllers :transacao do
   # get '/example' do
   #   'Hello world!'
   # end
-
-
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ##
 # You can use other adapters like:
 #
@@ -14,32 +16,32 @@
 #   }
 #
 ActiveRecord::Base.configurations[:development] = {
-  :adapter   => 'postgresql',
-  :database  => 'steward_alfred_development',
-  :username  => 'postgres',
-  :password  => 'x1p2t3o4!',
-  :host      => 'localhost',
-  :port      => 5432
+  adapter: 'postgresql',
+  database: 'steward_alfred_development',
+  username: 'postgres',
+  password: 'x1p2t3o4!',
+  host: 'localhost',
+  port: 5432
 
 }
 
 ActiveRecord::Base.configurations[:production] = {
-  :adapter   => 'postgresql',
-  :database  => 'steward_alfred_production',
-  :username  => 'postgres',
-  :password  => 'x1p2t3o4!',
-  :host      => 'localhost',
-  :port      => 5432
+  adapter: 'postgresql',
+  database: 'steward_alfred_production',
+  username: 'postgres',
+  password: 'x1p2t3o4!',
+  host: 'localhost',
+  port: 5432
 
 }
 
 ActiveRecord::Base.configurations[:test] = {
-  :adapter   => 'postgresql',
-  :database  => 'steward_alfred_test',
-  :username  => 'postgres',
-  :password  => 'x1p2t3o4!',
-  :host      => 'localhost',
-  :port      => 5432
+  adapter: 'postgresql',
+  database: 'steward_alfred_test',
+  username: 'postgres',
+  password: 'x1p2t3o4!',
+  host: 'localhost',
+  port: 5432
 
 }
 
