@@ -36,7 +36,7 @@ module Services
         kind: @kind,
         tags: @tags,
         transaction_date: @transaction_date,
-        billing_date: @transaction_date + 1.day
+        billing_date: @transaction_date
       )
     end
   end
