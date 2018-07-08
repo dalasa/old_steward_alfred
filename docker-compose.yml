@@ -1,8 +1,8 @@
 version: "3"
 services:
-
   alfred-postgres-db:
     image: postgres:10
+    container_name: alfred-postgres-db
     volumes:
       - db-data:/var/lib/postgresql/data
     ports:
