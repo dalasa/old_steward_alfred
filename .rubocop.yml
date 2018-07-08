@@ -16,3 +16,6 @@ Style/Documentation:
   Exclude:
     - db/**/*
     - lib/connection_pool_management_middleware.rb
+
+Metrics/ParameterLists:
+    CountKeywordArgs:	false
