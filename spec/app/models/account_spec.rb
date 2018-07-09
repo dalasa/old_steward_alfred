@@ -19,7 +19,7 @@ RSpec.describe Account do
           amount: 100,
           kind: transaction_kind,
           tags: %w[mercado alimentacao essencial],
-          transaction_date: Date.new.to_s
+          performed_at: Date.new.to_s
         )
       end
 
@@ -58,7 +58,7 @@ RSpec.describe Account do
           amount: 100,
           kind: transaction_kind,
           tags: %w[mercado alimentacao essencial],
-          transaction_date: Date.new.to_s
+          performed_at: Date.new.to_s
         )
       end
 

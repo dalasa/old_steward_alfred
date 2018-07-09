@@ -18,7 +18,7 @@ RSpec.describe Services::UpdateTransaction do
         amount: starting_transaction_ammount,
         kind: initial_transaction_kind,
         tags: %w[mercado alimentacao essencial],
-        transaction_date: Date.new.to_s
+        performed_at: Date.new.to_s
       ).execute
     end
 
@@ -48,11 +48,11 @@ RSpec.describe Services::UpdateTransaction do
 
     context 'when it updates transaction\'s date' do
       let(:new_date) { Date.new - 2.days }
-      let(:attributes) { { transaction_date:  new_date } }
+      let(:attributes) { { performed_at: new_date } }
 
       it 'successfully updates transaction\'s date' do
         subject
-        expect(Transaction.find(transaction.id).transaction_date).to eq new_date
+        expect(Transaction.find(transaction.id).performed_at).to eq new_date
       end
     end
 

@@ -10,7 +10,7 @@ class TransactionHelper
     optional(:amount).filled(:float?)
     optional(:kind).filled(:str?)
     optional(:tags).filled(:array?)
-    optional(:transaction_date).filled(:date?)
+    optional(:performed_at).filled(:date?)
     optional(:billing_date).filled(:date?)
   end
 
@@ -20,7 +20,7 @@ class TransactionHelper
     required(:amount).filled(:float?)
     required(:kind).filled(:str?)
     required(:tags).filled(:array?)
-    required(:transaction_date).filled(:str?)
-    # required(:transaction_date).filled(:date?)
+    required(:performed_at).filled(:str?)
+    # required(:performed_at).filled(:date?)
   end
 end

@@ -8,7 +8,7 @@ class CreateTransactions < ActiveRecord::Migration[5.1]
       t.float :amount, null: false
       t.column :kind, :integer, default: 0
       t.string :tags, array: true, default: []
-      t.date :transaction_date, null: false
+      t.date :performed_at, null: false
       t.date :billing_date, null: false
       t.timestamps null: false
     end

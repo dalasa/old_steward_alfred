@@ -11,7 +11,7 @@ RSpec.describe '/transactions' do
         amount: 100,
         kind: 'expense',
         tags: %w[mercado alimentacao essencial],
-        transaction_date: Date.new.to_s
+        performed_at: Date.new.to_s
       }
     end
     subject do
@@ -58,7 +58,7 @@ RSpec.describe '/transactions' do
         amount: 100,
         kind: :expense,
         tags: %w[mercado alimentacao essencial],
-        transaction_date: Date.new.to_s
+        performed_at: Date.new.to_s
       ).execute
     end
 
@@ -88,7 +88,7 @@ RSpec.describe '/transactions' do
         amount: 100,
         kind: :expense,
         tags: %w[mercado alimentacao essencial],
-        transaction_date: Date.new.to_s
+        performed_at: Date.new.to_s
       ).execute
     end
 
@@ -121,7 +121,7 @@ RSpec.describe '/transactions' do
         amount: 100,
         kind: :expense,
         tags: %w[mercado alimentacao essencial],
-        transaction_date: Date.new.to_s
+        performed_at: Date.new.to_s
       ).execute
     end
 
