@@ -6,7 +6,6 @@ StewardAlfred::App.controllers :transactions do
   get :index, with: :id do
     Transaction.find(params[:id]).to_json
   rescue ActiveRecord::RecordNotFound
-    logar_erro('Transaction not found')
     halt(404, 'Not found')
   end
 
