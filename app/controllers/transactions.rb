@@ -3,10 +3,10 @@
 StewardAlfred::App.controllers :transactions do
   set :protect_from_csrf, false
 
-  get :index, :with => :id do
+  get :index, with: :id do
     halt 501
   end
-  
+
   post :index do
     transaction = Services::CreateTransaction.new(
       account_name: params[:account_name],
