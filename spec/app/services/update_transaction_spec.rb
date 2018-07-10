@@ -118,14 +118,5 @@ RSpec.describe Services::UpdateTransaction do
         expect(Account.find_by(name: account_name).total).to eq(account_starting_total + starting_transaction_ammount)
       end
     end
-
-    # context 'when account does not exists,' do
-    #   it 'raise ActiveRecord::RecordInvalid exception' do
-    #     expect { subject }.to raise_error(ActiveRecord::RecordInvalid)
-    #   end
-    #   it 'throws a validation exception for account field' do
-    #     expect { subject }.to raise_error('Validation failed: Account can\'t be blank')
-    #   end
-    # end
   end
 end
