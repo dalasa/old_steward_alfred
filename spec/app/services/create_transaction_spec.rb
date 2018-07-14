@@ -13,7 +13,7 @@ RSpec.describe Services::CreateTransaction do
         amount: 50,
         kind: transaction_kind,
         tags: %w[mercado alimentacao essencial],
-        transaction_date: Date.new.to_s
+        performed_at: Date.new.to_s
       }
     end
     subject do
@@ -36,7 +36,7 @@ RSpec.describe Services::CreateTransaction do
         Services::CreateAccount.new(name: 'conta do banco', kind: :checking, total: account_starting_total).execute
       end
 
-      it 'successfully creates an account' do
+      it 'successfully creates a transaction' do
         subject
         expect(Transaction.count).to eq 1
       end

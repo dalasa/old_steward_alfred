@@ -8,7 +8,13 @@ class Account < ActiveRecord::Base
   def process_transaction(transaction)
     credit(transaction.amount) if transaction.income?
     debit(transaction.amount) if transaction.expense?
-    self.save!
+    save!
+  end
+
+  def undo_transaction_process(transaction)
+    credit(transaction.amount) if transaction.expense?
+    debit(transaction.amount) if transaction.income?
+    save!
   end
 
   private
