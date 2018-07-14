@@ -20,7 +20,7 @@ class TransactionHelper
     required(:amount).filled(:float?)
     required(:kind).filled(:str?)
     required(:tags).filled(:array?)
+    # TODO ajustar o campo para receber uma data: required(:performed_at).filled(:date?)
     required(:performed_at).filled(:str?)
-    # required(:performed_at).filled(:date?)
   end
 end
