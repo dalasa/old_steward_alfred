@@ -20,6 +20,8 @@ gem 'dry-validation'
 gem 'pry-byebug'
 gem 'rake'
 gem 'rubocop'
+gem 'ar-uuid'
+
 group :test do
   gem 'database_cleaner'
 end
