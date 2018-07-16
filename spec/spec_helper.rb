@@ -21,6 +21,13 @@ RSpec.configure do |conf|
   end
 end
 
+def setup_api_authorization
+  ENV['JWT_ISSUER'] = jwt_issuer = 'testsecret'
+  ENV['JWT_SECRET'] = jwt_secret = 'StewardAlfredTest'
+  token = JWT.encode({ iss: jwt_issuer }, jwt_secret, 'HS256')
+  header 'Authorization', "Bearer #{token}"
+end
+
 # You can use this method to custom specify a Rack app
 # you want rack-test to invoke:
 #

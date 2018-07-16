@@ -6,6 +6,8 @@ AllCops:
 Metrics/BlockLength:
   Exclude:
     - spec/**/*
+  ExcludedMethods:
+    - controllers
 
 Metrics/LineLength:
   Max: 120
