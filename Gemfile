@@ -16,11 +16,11 @@ source 'https://rubygems.org'
 gem 'oj'
 
 # Project requirements
+gem 'ar-uuid'
 gem 'dry-validation'
 gem 'pry-byebug'
 gem 'rake'
 gem 'rubocop'
-gem 'ar-uuid'
 
 group :test do
   gem 'database_cleaner'
