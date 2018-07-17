@@ -27,6 +27,8 @@ end
 gem 'activerecord', '~> 5.1.1', require: 'active_record'
 gem 'erubi', '~> 1.6'
 gem 'pg'
+gem 'puma'
+gem 'foreman'
 
 # Test requirements
 gem 'rack-test', require: 'rack/test', group: 'test'
