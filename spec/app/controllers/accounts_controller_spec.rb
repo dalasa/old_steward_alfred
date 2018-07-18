@@ -3,6 +3,10 @@
 require 'spec_helper'
 
 RSpec.describe '/accounts' do
+  before do
+    setup_api_authorization
+  end
+
   describe '#post' do
     let(:account) do
       {
