@@ -1,20 +1,5 @@
 # frozen_string_literal: true
 
-##
-# You can use other adapters like:
-#
-#   ActiveRecord::Base.configurations[:development] = {
-#     :adapter   => 'mysql2',
-#     :encoding  => 'utf8',
-#     :reconnect => true,
-#     :database  => 'your_database',
-#     :pool      => 5,
-#     :username  => 'root',
-#     :password  => '',
-#     :host      => 'localhost',
-#     :socket    => '/tmp/mysql.sock'
-#   }
-#
 ActiveRecord::Base.configurations[:development] = {
   adapter: 'postgresql',
   database: 'steward_alfred_development',
@@ -22,17 +7,6 @@ ActiveRecord::Base.configurations[:development] = {
   password: 'x1p2t3o4!',
   host: 'localhost',
   port: 5432
-
-}
-
-ActiveRecord::Base.configurations[:production] = {
-  adapter: 'postgresql',
-  database: 'steward_alfred_production',
-  username: 'postgres',
-  password: 'x1p2t3o4!',
-  host: 'localhost',
-  port: 5432
-
 }
 
 ActiveRecord::Base.configurations[:test] = {
@@ -42,7 +16,6 @@ ActiveRecord::Base.configurations[:test] = {
   password: 'x1p2t3o4!',
   host: 'localhost',
   port: 5432
-
 }
 
 # Setup our logger
