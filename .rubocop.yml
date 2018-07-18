@@ -1,11 +1,13 @@
 AllCops:
   TargetRubyVersion: 2.5
-  # Exclude:
-    # - path/to/files
+  Exclude:
+   - db/schema.rb
 
 Metrics/BlockLength:
   Exclude:
     - spec/**/*
+  ExcludedMethods:
+    - controllers
 
 Metrics/LineLength:
   Max: 120

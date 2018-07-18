@@ -16,9 +16,13 @@ ruby '2.5.1'
 gem 'oj'
 
 # Project requirements
+gem 'ar-uuid'
+gem 'dry-validation'
+gem 'jwt'
 gem 'pry-byebug'
 gem 'rake'
 gem 'rubocop'
+
 group :test do
   gem 'database_cleaner'
 end

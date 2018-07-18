@@ -2,8 +2,12 @@
 
 StewardAlfred::App.controllers :accounts do
   set :protect_from_csrf, false
-  
-  get :index, :with => :id do
+
+  before do
+    authorize!
+  end
+
+  get :index, with: :id do
     halt 501
   end
 

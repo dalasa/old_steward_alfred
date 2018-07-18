@@ -3,13 +3,13 @@
 module Services
   # Service that creates a transaction
   class CreateTransaction
-    def initialize(account_name:, description:, amount:, kind:, tags:, transaction_date:)
+    def initialize(account_name:, description:, amount:, kind:, tags:, performed_at:)
       @account_name = account_name
       @description = description
       @amount = amount
       @kind = kind
       @tags = tags
-      @transaction_date = Date.parse(transaction_date)
+      @performed_at = Date.parse(performed_at)
     end
 
     def execute
@@ -35,8 +35,8 @@ module Services
         amount: @amount,
         kind: @kind,
         tags: @tags,
-        transaction_date: @transaction_date,
-        billing_date: @transaction_date + 1.day
+        performed_at: @performed_at,
+        billing_date: @performed_at
       )
     end
   end
