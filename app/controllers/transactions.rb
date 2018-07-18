@@ -3,6 +3,10 @@
 StewardAlfred::App.controllers :transactions do
   set :protect_from_csrf, false
 
+  before do
+    authorize!
+  end
+
   get :index, with: :id do
     Transaction.find(params[:id]).to_json
   rescue ActiveRecord::RecordNotFound

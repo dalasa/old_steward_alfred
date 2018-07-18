@@ -3,6 +3,10 @@
 require 'spec_helper'
 
 RSpec.describe '/transactions' do
+  before do
+    setup_api_authorization
+  end
+
   describe '#post' do
     let(:transaction) do
       {
@@ -125,7 +129,7 @@ RSpec.describe '/transactions' do
       ).execute
     end
 
-    context 'when it deletes an existing transaction' do
+    context 'when it gets an existing transaction' do
       it 'returns a 200 code' do
         subject
         expect(last_response.status).to eq 200

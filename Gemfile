@@ -18,6 +18,7 @@ gem 'oj'
 # Project requirements
 gem 'ar-uuid'
 gem 'dry-validation'
+gem 'jwt'
 gem 'pry-byebug'
 gem 'rake'
 gem 'rubocop'
