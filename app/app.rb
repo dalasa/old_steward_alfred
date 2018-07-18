@@ -44,15 +44,17 @@ module StewardAlfred
     # disable :flash                # Disables sinatra-flash (enabled by default if Sinatra::Flash is defined)
     # layout  :my_layout            # Layout can be in views/layouts/foo.ext or views/foo.ext (default :application)
     #
-
-    ##
-    # You can configure for a specified environment like:
-    #
-    #   configure :development do
-    #     set :foo, :bar
-    #     disable :asset_stamp # no asset timestamping for dev
-    #   end
-    #
+    configure :production do
+      db = URI.parse(ENV['DATABASE_URL'])
+      ActiveRecord::Base.configurations[:production] = {
+        adapter:  db.scheme == 'postgres' ? 'postgresql' : db.scheme,
+        host:     db.host,
+        username: db.user,
+        password: db.password,
+        database: db.path[1..-1],
+        encoding: 'utf8'
+      }
+    end
 
     ##
     # You can manage errors like:
@@ -66,7 +68,7 @@ module StewardAlfred
     #   end
     #
     get 'healthcheck' do
-	'ok!'
+	     'ok!'
     end
   end
 end
