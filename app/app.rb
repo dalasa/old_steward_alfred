@@ -65,5 +65,8 @@ module StewardAlfred
     #     render 'errors/500'
     #   end
     #
+    get 'healthcheck' do
+	'ok!'
+    end
   end
 end
