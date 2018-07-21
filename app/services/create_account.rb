@@ -10,8 +10,7 @@ module Services
     end
 
     def execute
-      account = Account.new(name: @name, kind: @kind, total: @total)
-      account.save
+      Account.create!(name: @name, kind: @kind, total: @total)
     end
   end
 end

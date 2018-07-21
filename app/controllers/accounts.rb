@@ -5,6 +5,7 @@ StewardAlfred::App.controllers :accounts do
 
   before do
     authorize!
+    @request_data = Oj.load(request.body.read, symbol_keys: true)
   end
 
   get :index, with: :id do
@@ -12,12 +13,13 @@ StewardAlfred::App.controllers :accounts do
   end
 
   post :index do
-    Services::CreateAccount.new(
-      name: params[:name],
-      kind: params[:kind],
-      total: params[:total]
+    account = Services::CreateAccount.new(
+      name: @request_data[:name],
+      kind: @request_data[:kind],
+      total: @request_data[:total]
     ).execute
     status 201
+    Oj.dump(account.attributes)
   rescue StandardError => e
     logger.error(e.message)
     status 500

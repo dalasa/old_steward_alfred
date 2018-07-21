@@ -5,16 +5,17 @@ StewardAlfred::App.controllers :transactions do
 
   before do
     authorize!
+    @request_data = Oj.load(request.body.read, symbol_keys: true)
   end
 
   get :index, with: :id do
-    Transaction.find(params[:id]).to_json
+    Transaction.find(@request_data[:id]).to_json
   rescue ActiveRecord::RecordNotFound
     halt(404, 'Not found')
   end
 
   post :index do
-    validation = TransactionHelper::CreateValidator.call(params)
+    validation = TransactionHelper::CreateValidator.call(@request_data)
     transaction = Services::CreateTransaction.new(validation.output).execute
     status 201
     Oj.dump(transaction.attributes)
@@ -24,13 +25,13 @@ StewardAlfred::App.controllers :transactions do
   end
 
   patch :index, with: :id do
-    validation = TransactionHelper::UpdateValidator.call(request.params)
-    Services::UpdateTransaction.new(transaction_id: params[:id], attributes: validation.output).execute
+    validation = TransactionHelper::UpdateValidator.call(@request_data)
+    Services::UpdateTransaction.new(transaction_id: @request_data[:id], attributes: validation.output).execute
     status 200
   end
 
   delete :index, with: :id do
-    Services::DeleteTransaction.new(transaction_id: params[:id]).execute
+    Services::DeleteTransaction.new(transaction_id: @request_data[:id]).execute
     status 200
   end
 end
