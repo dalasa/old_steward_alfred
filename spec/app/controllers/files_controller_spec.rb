@@ -23,12 +23,19 @@ RSpec.describe '/files' do
             expect(last_response.status).to eq 200
           end
 
-          it 'creates the file 5 transactions on account' do
+          it 'creates the file\'s 5 transactions on account' do
             expect(account.transactions.size).to eq 5
           end
 
-          it 'updates the account final total' do
+          it 'updates the account total' do
             expect(account.reload.total).to eq 825.24
+          end
+
+          let(:transaction_keys) do
+            %w(id account_id description amount kind tags performed_at billing_date created_at updated_at)
+          end
+          it 'returns the created transactions' do
+            expect(Oj.load(last_response.body).first.keys).to contain_exactly(*transaction_keys)
           end
 
         end
