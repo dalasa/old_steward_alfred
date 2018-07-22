@@ -22,6 +22,7 @@ gem 'jwt'
 gem 'pry-byebug'
 gem 'rake'
 gem 'rubocop'
+gem 'ofx'
 
 group :test do
   gem 'database_cleaner'
