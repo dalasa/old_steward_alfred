@@ -19,10 +19,10 @@ gem 'oj'
 gem 'ar-uuid'
 gem 'dry-validation'
 gem 'jwt'
+gem 'ofx'
 gem 'pry-byebug'
 gem 'rake'
 gem 'rubocop'
-gem 'ofx'
 
 group :test do
   gem 'database_cleaner'
@@ -31,9 +31,9 @@ end
 # Component requirements
 gem 'activerecord', '~> 5.1.1', require: 'active_record'
 gem 'erubi', '~> 1.6'
+gem 'foreman'
 gem 'pg'
 gem 'puma'
-gem 'foreman'
 
 # Test requirements
 gem 'rack-test', require: 'rack/test', group: 'test'

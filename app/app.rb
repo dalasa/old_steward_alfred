@@ -75,7 +75,7 @@ module StewardAlfred
     #   end
     #
     get 'healthcheck' do
-	     'ok!'
+      'ok!'
     end
   end
 end
