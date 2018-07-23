@@ -8,7 +8,7 @@ module Adapters
       def from_itau_ofx_transaction(itau_ofx_transaction)
         Transaction.new(
           description: itau_ofx_transaction.memo,
-          amount: convert_amount(itau_ofx_transaction.amount),
+          amount: itau_ofx_transaction.amount.abs,
           kind: convert_kind(itau_ofx_transaction.type),
           tags: [],
           performed_at: convert_date(itau_ofx_transaction.posted_at),
@@ -25,11 +25,6 @@ module Adapters
 
       def convert_date(time)
         time.to_datetime.to_date
-      end
-
-      # FIXME: remove this because float is not the best type to use here
-      def convert_amount(amount)
-        amount.abs.to_f
       end
     end
   end
