@@ -31,7 +31,6 @@ module Adapters
       def convert_amount(amount)
         amount.abs.to_f
       end
-
     end
   end
 end

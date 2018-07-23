@@ -106,7 +106,7 @@ RSpec.describe Services::UpdateTransaction do
 
     context 'when it updates transaction\'s kind' do
       let(:new_kind) { 'income' }
-      let(:attributes) { { kind:  new_kind } }
+      let(:attributes) { { kind: new_kind } }
       let(:account_balance) { Account.find_by(name: account_name).balance }
 
       it 'successfully updates transaction\'s kind' do
