@@ -16,7 +16,7 @@ StewardAlfred::App.controllers :accounts do
     account = Services::CreateAccount.new(
       name: @request_data[:name],
       kind: @request_data[:kind],
-      total: @request_data[:total]
+      balance: @request_data[:balance]
     ).execute
     status 201
     Oj.dump(account.attributes)

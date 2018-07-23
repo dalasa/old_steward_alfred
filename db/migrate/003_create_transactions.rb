@@ -5,7 +5,7 @@ class CreateTransactions < ActiveRecord::Migration[5.1]
     create_table :transactions do |t|
       t.belongs_to :account, index: true
       t.string :description, null: false
-      t.float :amount, null: false
+      t.decimal :amount, null: false
       t.column :kind, :integer, default: 0
       t.string :tags, array: true, default: []
       t.date :performed_at, null: false

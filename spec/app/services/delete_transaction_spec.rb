@@ -5,7 +5,7 @@ require 'spec_helper'
 RSpec.describe Services::DeleteTransaction do
   describe '#execute' do
     let(:account_name) { 'conta do banco' }
-    let(:account_starting_total) { 100 }
+    let(:account_starting_balance) { 100 }
     let(:transaction) do
       Services::CreateTransaction.new(
         account_name: account_name,
@@ -18,7 +18,7 @@ RSpec.describe Services::DeleteTransaction do
     end
 
     before do
-      Services::CreateAccount.new(name: 'conta do banco', kind: :checking, total: account_starting_total).execute
+      Services::CreateAccount.new(name: 'conta do banco', kind: :checking, balance: account_starting_balance).execute
     end
 
     subject do
@@ -30,9 +30,9 @@ RSpec.describe Services::DeleteTransaction do
       expect(Transaction.count).to eq 0
     end
 
-    it 'updates accounts total' do
+    it 'updates accounts balance' do
       subject
-      expect(Account.find_by(name: account_name).total).to eq(account_starting_total)
+      expect(Account.find_by(name: account_name).balance).to eq(account_starting_balance)
     end
   end
 end

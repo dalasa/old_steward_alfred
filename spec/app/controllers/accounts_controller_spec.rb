@@ -12,7 +12,7 @@ RSpec.describe '/accounts' do
       {
         name: 'my bank checking account',
         kind: 'checking',
-        total: 100
+        balance: 100
       }
     end
     subject do

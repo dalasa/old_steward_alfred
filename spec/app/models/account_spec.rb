@@ -5,12 +5,12 @@ require 'spec_helper'
 RSpec.describe Account do
   describe '#process_transaction' do
     subject do
-      account = Account.new(name: 'conta do banco', kind: 'checking', total: account_starting_total)
+      account = Account.new(name: 'conta do banco', kind: 'checking', balance: account_starting_balance)
       account.save!
       account.process_transaction(transaction)
     end
     context 'when it is a checking account' do
-      let(:account_starting_total) { 100 }
+      let(:account_starting_balance) { 100 }
       let(:account_name) { 'conta do banco' }
       let(:transaction) do
         Transaction.new(
@@ -26,17 +26,17 @@ RSpec.describe Account do
       context 'when a income transaction is added to account' do
         let(:transaction_kind) { :income }
 
-        it 'sums the transaction amount to accounts total' do
+        it 'sums the transaction amount to accounts balance' do
           subject
-          expect(Account.find_by(name: account_name).total).to eq(account_starting_total + transaction.amount)
+          expect(Account.find_by(name: account_name).balance).to eq(account_starting_balance + transaction.amount)
         end
       end
 
       context 'when a expense transaction is added to account' do
         let(:transaction_kind) { :expense }
-        it 'substracts the amount from accounts total' do
+        it 'substracts the amount from accounts balance' do
           subject
-          expect(Account.find_by(name: account_name).total).to eq(account_starting_total - transaction.amount)
+          expect(Account.find_by(name: account_name).balance).to eq(account_starting_balance - transaction.amount)
         end
       end
     end
@@ -44,12 +44,12 @@ RSpec.describe Account do
 
   describe '#undo_transaction_process' do
     subject do
-      account = Account.new(name: 'conta do banco', kind: 'checking', total: account_starting_total)
+      account = Account.new(name: 'conta do banco', kind: 'checking', balance: account_starting_balance)
       account.save!
       account.undo_transaction_process(transaction)
     end
     context 'when it is a checking account' do
-      let(:account_starting_total) { 100 }
+      let(:account_starting_balance) { 100 }
       let(:account_name) { 'conta do banco' }
       let(:transaction) do
         Transaction.new(
@@ -65,17 +65,17 @@ RSpec.describe Account do
       context 'when a income transaction is added to account' do
         let(:transaction_kind) { :income }
 
-        it 'sums the transaction amount to accounts total' do
+        it 'sums the transaction amount to accounts balance' do
           subject
-          expect(Account.find_by(name: account_name).total).to eq(account_starting_total - transaction.amount)
+          expect(Account.find_by(name: account_name).balance).to eq(account_starting_balance - transaction.amount)
         end
       end
 
       context 'when a expense transaction is added to account' do
         let(:transaction_kind) { :expense }
-        it 'substracts the amount from accounts total' do
+        it 'substracts the amount from accounts balance' do
           subject
-          expect(Account.find_by(name: account_name).total).to eq(account_starting_total + transaction.amount)
+          expect(Account.find_by(name: account_name).balance).to eq(account_starting_balance + transaction.amount)
         end
       end
     end

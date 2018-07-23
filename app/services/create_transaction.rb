@@ -14,7 +14,7 @@ module Services
 
     def execute
       transaction = create_on_database
-      update_account_total_with(transaction)
+      update_account_balance_with(transaction)
       transaction
     end
 
@@ -24,7 +24,7 @@ module Services
       @account ||= Account.find_by(name: @account_name)
     end
 
-    def update_account_total_with(transaction)
+    def update_account_balance_with(transaction)
       account.process_transaction(transaction)
     end
 
