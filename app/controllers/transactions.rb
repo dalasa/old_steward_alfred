@@ -9,7 +9,7 @@ StewardAlfred::App.controllers :transactions do
   end
 
   get :index, with: :id do
-    Transaction.find(@request_data[:id]).to_json
+    Transaction.find(params[:id]).to_json
   rescue ActiveRecord::RecordNotFound
     halt(404, 'Not found')
   end
@@ -26,12 +26,12 @@ StewardAlfred::App.controllers :transactions do
 
   patch :index, with: :id do
     validation = TransactionHelper::UpdateValidator.call(@request_data)
-    Services::UpdateTransaction.new(transaction_id: @request_data[:id], attributes: validation.output).execute
+    Services::UpdateTransaction.new(transaction_id: params[:id], attributes: validation.output).execute
     status 200
   end
 
   delete :index, with: :id do
-    Services::DeleteTransaction.new(transaction_id: @request_data[:id]).execute
+    Services::DeleteTransaction.new(transaction_id: params[:id]).execute
     status 200
   end
 end
