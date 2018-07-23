@@ -19,7 +19,7 @@ RSpec.describe '/transactions' do
       }
     end
     subject do
-      post '/transactions', transaction.to_json, { "CONTENT_TYPE" => "application/json" }
+      post '/transactions', transaction.to_json, 'CONTENT_TYPE' => 'application/json'
     end
 
     context 'when account does not exist' do
@@ -48,7 +48,7 @@ RSpec.describe '/transactions' do
 
   describe '#patch' do
     subject do
-      patch "/transactions/#{transaction.id}", attributes_to_update.to_json, { "CONTENT_TYPE" => "application/json" }
+      patch "/transactions/#{transaction.id}", attributes_to_update.to_json, 'CONTENT_TYPE' => 'application/json'
     end
 
     before do
