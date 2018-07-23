@@ -20,10 +20,10 @@ class Account < ActiveRecord::Base
   private
 
   def credit(amount)
-    self.total += amount
+    self.balance += amount
   end
 
   def debit(amount)
-    self.total -= amount
+    self.balance -= amount
   end
 end

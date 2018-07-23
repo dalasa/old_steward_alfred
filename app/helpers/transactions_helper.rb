@@ -7,7 +7,7 @@ class TransactionHelper
   UpdateValidator = Dry::Validation.Params do
     required(:id).filled(:int?)
     optional(:description).filled(:str?)
-    optional(:amount).filled(:float?)
+    optional(:amount).filled(:decimal?)
     optional(:kind).filled(:str?)
     optional(:tags).filled(:array?)
     optional(:performed_at).filled(:date?)
@@ -17,7 +17,7 @@ class TransactionHelper
   CreateValidator = Dry::Validation.Params do
     required(:account_name).filled(:str?)
     required(:description).filled(:str?)
-    required(:amount).filled(:float?)
+    required(:amount).filled(:decimal?)
     required(:kind).filled(:str?)
     required(:tags).filled(:array?)
     # TODO: ajustar o campo para receber uma data: required(:performed_at).filled(:date?)

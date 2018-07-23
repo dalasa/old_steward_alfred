@@ -12,11 +12,11 @@ RSpec.describe '/accounts' do
       {
         name: 'my bank checking account',
         kind: 'checking',
-        total: 100
+        balance: 100
       }
     end
     subject do
-      post '/accounts', account
+      post '/accounts', account.to_json, 'CONTENT_TYPE' => 'application/json'
     end
 
     it 'returns 201 status' do

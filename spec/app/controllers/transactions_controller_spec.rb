@@ -19,7 +19,7 @@ RSpec.describe '/transactions' do
       }
     end
     subject do
-      post '/transactions', transaction
+      post '/transactions', transaction.to_json, 'CONTENT_TYPE' => 'application/json'
     end
 
     context 'when account does not exist' do
@@ -31,7 +31,7 @@ RSpec.describe '/transactions' do
 
     context 'when accoutn exists' do
       before do
-        Services::CreateAccount.new(name: 'conta do banco', kind: :checking, total: 100).execute
+        Services::CreateAccount.new(name: 'conta do banco', kind: :checking, balance: 100).execute
       end
 
       it 'returns 201' do
@@ -48,11 +48,11 @@ RSpec.describe '/transactions' do
 
   describe '#patch' do
     subject do
-      patch "/transactions/#{transaction.id}", attributes_to_update
+      patch "/transactions/#{transaction.id}", attributes_to_update.to_json, 'CONTENT_TYPE' => 'application/json'
     end
 
     before do
-      Services::CreateAccount.new(name: 'conta do banco', kind: :checking, total: 100).execute
+      Services::CreateAccount.new(name: 'conta do banco', kind: :checking, balance: 100).execute
     end
 
     let(:transaction) do
@@ -82,7 +82,7 @@ RSpec.describe '/transactions' do
     end
 
     before do
-      Services::CreateAccount.new(name: 'conta do banco', kind: :checking, total: 100).execute
+      Services::CreateAccount.new(name: 'conta do banco', kind: :checking, balance: 100).execute
     end
 
     let(:transaction) do
@@ -115,7 +115,7 @@ RSpec.describe '/transactions' do
     end
 
     before do
-      Services::CreateAccount.new(name: 'conta do banco', kind: :checking, total: 100).execute
+      Services::CreateAccount.new(name: 'conta do banco', kind: :checking, balance: 100).execute
     end
 
     let(:transaction) do

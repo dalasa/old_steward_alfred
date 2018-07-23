@@ -11,7 +11,7 @@ module Services
     def execute
       old_transaction = transaction.clone
       update_transaction_on_database
-      fix_account_total(old_transaction) if %i[amount kind account].any? { |k| @attributes.key?(k) }
+      fix_account_balance(old_transaction) if %i[amount kind account].any? { |k| @attributes.key?(k) }
     end
 
     private
@@ -34,7 +34,7 @@ module Services
       Account.find_by(name: name)
     end
 
-    def fix_account_total(old_transaction)
+    def fix_account_balance(old_transaction)
       old_transaction.account.undo_transaction_process(old_transaction)
       transaction.account.process_transaction(transaction)
     end
