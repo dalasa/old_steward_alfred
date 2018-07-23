@@ -58,6 +58,7 @@ end
 #
 Padrino.after_load do
   Dir[File.expand_path(File.dirname(__FILE__) + '/../app/services/**/*.rb')].each(&method(:require))
+  Dir[File.expand_path(File.dirname(__FILE__) + '/../app/adapters/**/*.rb')].each(&method(:require))
 end
 
 Padrino.load!
