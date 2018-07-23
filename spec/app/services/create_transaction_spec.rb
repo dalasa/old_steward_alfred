@@ -30,10 +30,10 @@ RSpec.describe Services::CreateTransaction do
     end
 
     context 'when account exists' do
-      let(:account_starting_total) { 100 }
+      let(:account_starting_balance) { 100 }
 
       before do
-        Services::CreateAccount.new(name: 'conta do banco', kind: :checking, total: account_starting_total).execute
+        Services::CreateAccount.new(name: 'conta do banco', kind: :checking, balance: account_starting_balance).execute
       end
 
       it 'successfully creates a transaction' do
@@ -47,17 +47,17 @@ RSpec.describe Services::CreateTransaction do
 
       context 'when it is an expense transaction' do
         let(:transaction_kind) { 'expense' }
-        it 'substracts the amount from accounts total' do
+        it 'substracts the amount from accounts balance' do
           transaction = subject
-          expect(Account.find_by(name: account_name).total).to eq(account_starting_total - transaction.amount)
+          expect(Account.find_by(name: account_name).balance).to eq(account_starting_balance - transaction.amount)
         end
       end
 
       context 'when it is an income transaction' do
         let(:transaction_kind) { :income }
-        it 'sums the transaction amount to accounts total' do
+        it 'sums the transaction amount to accounts balance' do
           transaction = subject
-          expect(Account.find_by(name: account_name).total).to eq(account_starting_total + transaction.amount)
+          expect(Account.find_by(name: account_name).balance).to eq(account_starting_balance + transaction.amount)
         end
       end
     end

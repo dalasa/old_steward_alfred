@@ -31,7 +31,7 @@ RSpec.describe '/transactions' do
 
     context 'when accoutn exists' do
       before do
-        Services::CreateAccount.new(name: 'conta do banco', kind: :checking, total: 100).execute
+        Services::CreateAccount.new(name: 'conta do banco', kind: :checking, balance: 100).execute
       end
 
       it 'returns 201' do
@@ -52,7 +52,7 @@ RSpec.describe '/transactions' do
     end
 
     before do
-      Services::CreateAccount.new(name: 'conta do banco', kind: :checking, total: 100).execute
+      Services::CreateAccount.new(name: 'conta do banco', kind: :checking, balance: 100).execute
     end
 
     let(:transaction) do
@@ -82,7 +82,7 @@ RSpec.describe '/transactions' do
     end
 
     before do
-      Services::CreateAccount.new(name: 'conta do banco', kind: :checking, total: 100).execute
+      Services::CreateAccount.new(name: 'conta do banco', kind: :checking, balance: 100).execute
     end
 
     let(:transaction) do
@@ -115,7 +115,7 @@ RSpec.describe '/transactions' do
     end
 
     before do
-      Services::CreateAccount.new(name: 'conta do banco', kind: :checking, total: 100).execute
+      Services::CreateAccount.new(name: 'conta do banco', kind: :checking, balance: 100).execute
     end
 
     let(:transaction) do

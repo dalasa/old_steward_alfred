@@ -5,7 +5,7 @@ class CreateAccounts < ActiveRecord::Migration[5.1]
     create_table :accounts do |t|
       t.string :name
       t.column :kind, :integer, default: 0
-      t.float :total
+      t.decimal :balance
       t.timestamps null: false
     end
     add_index('accounts', 'name', unique: true)

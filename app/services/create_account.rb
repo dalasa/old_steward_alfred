@@ -3,14 +3,14 @@
 module Services
   # Service that creates accounts
   class CreateAccount
-    def initialize(name:, kind:, total:)
+    def initialize(name:, kind:, balance:)
       @name = name
       @kind = kind
-      @total = total
+      @balance = balance
     end
 
     def execute
-      Account.create!(name: @name, kind: @kind, total: @total)
+      Account.create!(name: @name, kind: @kind, balance: @balance)
     end
   end
 end
